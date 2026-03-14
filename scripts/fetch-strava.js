@@ -92,15 +92,19 @@ async function fetchStrava() {
   let currentDate = new Date(startDate);
   
   while (currentDate <= today) {
-    const dateStr = currentDate.toISOString().split('T')[0];
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    const dateStr = `${year}-${month}-${day}`;
+    
     aggregated[dateStr] = { date: dateStr, count: 0, kcal: 0, duration: 0 };
     currentDate.setDate(currentDate.getDate() + 1);
   }
 
   allActivities.forEach(activity => {
     // Handle Strava date strings which represent local time e.g., "2024-03-24T10:00:00Z"
-    // Since dates are handled as UTC strings in Strava (but suffixed Z), split 'T' works perfectly
     const dateStr = activity.start_date_local.split('T')[0];
+    
     if (aggregated[dateStr]) {
       aggregated[dateStr].count += 1;
       
