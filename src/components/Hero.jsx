@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { cvData } from '../cvData';
+import { Download } from 'lucide-react';
 
 const Hero = () => {
   const heroRef = useRef(null);
@@ -52,9 +53,9 @@ const Hero = () => {
               href="JM  Currículo 2026.pdf" 
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-surface border border-border text-primary font-semibold rounded-full hover:bg-border/30 hover:scale-[1.02] transition-all text-sm tracking-wide shadow-apple"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-surface border border-border text-primary font-semibold rounded-full hover:bg-border/30 hover:scale-[1.02] transition-all text-sm tracking-wide shadow-apple"
             >
-              View Résumé
+              <Download size={18} /> View Résumé
             </a>
           </div>
         </div>
