@@ -71,10 +71,15 @@ async function fetchStrava() {
   // Aggregate logic
   const aggregated = {};
   
-  // Track start of 52 weeks ago for a perfect grid
+  // Track start of 52 weeks ago, aligned to sunday
+  // To align with a github-style grid (where rows are Sun-Sat), we need to start on the Sunday 52 weeks ago.
   const today = new Date();
+  const dayOfWeek = today.getDay(); // 0 (Sun) to 6 (Sat)
+  
+  const totalDays = (52 * 7) + (dayOfWeek + 1);
+  
   const startDate = new Date(today);
-  startDate.setDate(today.getDate() - (52 * 7)); // 364 days ago
+  startDate.setDate(today.getDate() - totalDays + 1);
   
   let currentDate = new Date(startDate);
   
