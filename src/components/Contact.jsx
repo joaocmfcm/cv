@@ -1,77 +1,53 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { cvData } from '../cvData';
-import { Github, Linkedin, Mail, TerminalSquare } from 'lucide-react';
 
 const Contact = () => {
   const currentYear = new Date().getFullYear();
-  const [cmdText, setCmdText] = useState('> grep -i "contact" /sys/intent');
-
-  const handleHover = (text) => setCmdText(text);
-  const handleLeave = () => setCmdText('> grep -i "contact" /sys/intent');
 
   return (
-    <footer id="contact" className="pt-24 pb-12 section-reveal">
-      <div className="bg-white/5 border border-white/10 rounded-[2rem] p-8 md:p-16 relative overflow-hidden">
-        {/* Background glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-neon/10 blur-[100px] rounded-full pointer-events-none"></div>
-
-        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
+    <footer id="contact" className="pt-32 pb-12 section-reveal">
+      <div className="bg-surface border border-border/40 rounded-[3rem] p-10 md:p-20 shadow-apple text-center overflow-hidden relative">
+        
+        <div className="relative z-10 max-w-2xl mx-auto space-y-10">
+          <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-primary">
+            Let's talk.
+          </h2>
           
-          <div className="flex-1 space-y-6">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter">
-              Let's <span className="heading-drama text-white/50">Connect</span>
-            </h2>
-            <p className="text-ash/70 text-lg max-w-md">
-              System is operational. Currently based in {cvData.location}. Open for new opportunities and collaborations.
-            </p>
-            
-            {/* CLI prompt element */}
-            <div className="bg-jet border border-white/10 p-4 rounded-layer font-fira text-sm flex items-center gap-3 max-w-md">
-              <TerminalSquare size={18} className="text-neon" />
-              <span className="text-ash/80 inline-block min-w-[250px]">{cmdText}<span className="animate-pulse">_</span></span>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-4 min-w-[200px]">
+          <p className="text-xl md:text-2xl text-secondary font-medium leading-relaxed">
+            Currently based in {cvData.location}. Open for new opportunities and collaborations.
+          </p>
+          
+          <div className="pt-6">
             <a 
               href={`mailto:${cvData.email}`} 
-              onMouseEnter={() => handleHover(`> mailto:${cvData.email}`)}
-              onMouseLeave={handleLeave}
-              className="flex items-center gap-4 p-4 rounded-layer bg-white/5 border border-white/10 hover:border-neon/50 hover:bg-neon/10 transition-all magnetic group"
+              className="inline-block px-10 py-5 bg-primary text-surface font-semibold rounded-full hover:scale-105 hover:shadow-apple-hover transition-all text-lg tracking-wide"
             >
-              <Mail className="text-neon group-hover:scale-110 transition-transform" />
-              <span className="font-fira text-sm">Email</span>
+              Initialize Contact
             </a>
-            
+          </div>
+
+          <div className="flex items-center justify-center gap-8 pt-8 border-t border-border/40 mt-12 w-full max-w-sm mx-auto">
             <a 
               href={`https://${cvData.linkedin}`} 
               target="_blank" rel="noopener noreferrer"
-              onMouseEnter={() => handleHover(`> ping linkedin.com/in/joaocmfcm`)}
-              onMouseLeave={handleLeave}
-              className="flex items-center gap-4 p-4 rounded-layer bg-white/5 border border-white/10 hover:border-neon/50 hover:bg-neon/10 transition-all magnetic group"
+              className="text-secondary font-semibold hover:text-primary transition-colors"
             >
-              <Linkedin className="text-neon group-hover:scale-110 transition-transform" />
-              <span className="font-fira text-sm">LinkedIn</span>
+              LinkedIn
             </a>
-
             <a 
               href={`https://github.com/${cvData.github}`} 
               target="_blank" rel="noopener noreferrer"
-              onMouseEnter={() => handleHover(`> ssh git@github.com:${cvData.github}`)}
-              onMouseLeave={handleLeave}
-              className="flex items-center gap-4 p-4 rounded-layer bg-white/5 border border-white/10 hover:border-neon/50 hover:bg-neon/10 transition-all magnetic group"
+              className="text-secondary font-semibold hover:text-primary transition-colors"
             >
-              <Github className="text-neon group-hover:scale-110 transition-transform" />
-              <span className="font-fira text-sm">GitHub</span>
+              GitHub
             </a>
           </div>
-          
         </div>
       </div>
 
-      <div className="mt-12 text-center text-ash/40 font-fira text-xs flex flex-col md:flex-row items-center justify-between px-4">
+      <div className="mt-16 text-center text-secondary/60 text-sm font-medium flex flex-col md:flex-row items-center justify-between px-4">
         <p>&copy; {currentYear} {cvData.name}. All rights reserved.</p>
-        <p className="mt-2 md:mt-0">Built with React & Tailwind</p>
+        <p className="mt-2 md:mt-0">Crafted with React</p>
       </div>
     </footer>
   );

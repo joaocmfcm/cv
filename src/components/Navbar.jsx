@@ -12,21 +12,18 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-40 bg-jet/80 backdrop-blur-md border-b border-white/5 py-4">
-      <div className="container mx-auto px-6 max-w-6xl flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2 group">
-          <span className="w-8 h-8 rounded bg-neon/10 border border-neon/30 flex items-center justify-center text-neon font-fira font-bold group-hover:bg-neon group-hover:text-jet transition-colors">
-            {cvData.name.charAt(0)}
-          </span>
-          <span className="font-fira text-sm hidden sm:block font-bold">~/{cvData.github}</span>
+    <nav className="fixed top-0 left-0 right-0 z-40 bg-surface/80 backdrop-blur-xl border-b border-border/40 py-4 transition-all">
+      <div className="container mx-auto px-6 max-w-5xl flex items-center justify-between">
+        <a href="#" className="font-semibold text-lg tracking-tight hover:opacity-70 transition-opacity">
+          {cvData.name}
         </a>
         
-        <ul className="flex items-center gap-6">
+        <ul className="flex items-center gap-8">
           {links.map((link) => (
             <li key={link} className="hidden md:block">
               <button 
                 onClick={() => scrollToSection(link)}
-                className="text-ash/60 hover:text-neon text-sm font-fira transition-colors uppercase tracking-wider magnetic"
+                className="text-primary/70 hover:text-primary text-sm font-medium transition-colors"
               >
                 {link}
               </button>
@@ -35,7 +32,7 @@ const Navbar = () => {
           <li>
             <a 
               href={`mailto:${cvData.email}`}
-              className="px-4 py-2 bg-neon text-jet text-sm font-fira font-bold rounded hover:bg-neon/90 transition-colors uppercase magnetic inline-block"
+              className="px-4 py-2 bg-primary text-surface text-sm font-medium rounded-full hover:scale-105 hover:shadow-apple-hover transition-all inline-block"
             >
               Get in Touch
             </a>

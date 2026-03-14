@@ -18,10 +18,10 @@ function App() {
     let ctx = gsap.context(() => {
       // Intro animations
       gsap.from('.section-reveal', {
-        y: 50,
+        y: 40,
         opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
+        duration: 1.2,
+        ease: 'apple',
         stagger: 0.1,
         scrollTrigger: {
           trigger: '.section-reveal',
@@ -34,12 +34,12 @@ function App() {
   }, []);
 
   return (
-    <div ref={comp} className="min-h-screen selection:bg-neon selection:text-jet pb-20 relative">
+    <div ref={comp} className="min-h-screen selection:bg-primary selection:text-surface pb-20 relative bg-background text-primary">
       <div className="noise-overlay"></div>
       
       <Navbar />
       
-      <main className="container mx-auto px-6 max-w-6xl space-y-32">
+      <main className="container mx-auto px-6 max-w-5xl space-y-32">
         <Hero />
         <Experience />
         <Skills />

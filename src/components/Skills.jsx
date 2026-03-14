@@ -5,41 +5,45 @@ const Skills = () => {
   const [activeCategory, setActiveCategory] = useState(null);
 
   const categories = Object.keys(cvData.skills);
+  
+  const formatCategoryName = (name) => {
+    return name.charAt(0).toUpperCase() + name.slice(1);
+  };
 
   return (
-    <section id="skills" className="pt-12 section-reveal">
-      <div className="flex items-center gap-4 mb-12">
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tighter">Technical <span className="heading-drama text-white/50">Arsenal</span></h2>
-        <div className="flex-grow h-px bg-gradient-to-r from-neon/50 to-transparent max-w-sm ml-4"></div>
+    <section id="skills" className="pt-20 section-reveal">
+      <div className="mb-16">
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-primary">Skills.</h2>
+        <p className="text-xl text-secondary mt-2 font-medium">Tools of the trade.</p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        <div className="lg:col-span-3 flex flex-col gap-2">
+      <div className="flex flex-col lg:flex-row gap-12">
+        <div className="flex flex-row lg:flex-col flex-wrap gap-2 lg:min-w-[200px]">
           {categories.map((cat) => (
             <button
               key={cat}
               onMouseEnter={() => setActiveCategory(cat)}
               onMouseLeave={() => setActiveCategory(null)}
-              className={`text-left px-4 py-3 rounded-layer border transition-all duration-300 font-fira text-sm uppercase tracking-wider
+              className={`text-left px-5 py-3 rounded-2xl transition-all duration-300 font-medium text-sm lg:text-base
                 ${activeCategory === cat || activeCategory === null 
-                  ? 'border-neon/30 text-neon bg-neon/10' 
-                  : 'border-white/10 text-ash/40 hover:text-ash/70'}`}
+                  ? 'bg-primary text-surface shadow-apple' 
+                  : 'bg-surface text-secondary hover:text-primary'}`}
             >
-              {`<${cat} />`}
+              {formatCategoryName(cat)}
             </button>
           ))}
         </div>
 
-        <div className="lg:col-span-9">
+        <div className="flex-1">
           <div className="flex flex-wrap gap-3">
             {categories.map((cat) => (
               cvData.skills[cat].map((skill, idx) => (
                  <span 
                    key={`${cat}-${idx}`} 
-                   className={`px-4 py-2 text-sm font-medium rounded-layer border transition-all duration-500 magnetic
+                   className={`px-5 py-3 text-sm md:text-base font-semibold rounded-2xl transition-all duration-500 
                      ${activeCategory === null || activeCategory === cat 
-                        ? 'border-white/20 bg-white/5 text-ash hover:border-neon hover:text-neon shadow-[0_0_15px_rgba(0,255,65,0)] hover:shadow-[0_0_15px_rgba(0,255,65,0.2)]' 
-                        : 'border-white/5 bg-transparent text-ash/20 opacity-50 scale-95'}`}
+                        ? 'bg-surface border border-border/40 text-primary shadow-apple hover:shadow-apple-hover hover:-translate-y-1' 
+                        : 'bg-surface/50 border-transparent text-secondary/30 scale-95'}`}
                  >
                    {skill}
                  </span>
