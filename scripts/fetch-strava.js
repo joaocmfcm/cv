@@ -108,7 +108,22 @@ async function fetchStrava() {
     if (aggregated[dateStr]) {
       aggregated[dateStr].count += 1;
       
-      const cals = activity.calories || activity.kilojoules || 0;
+      // Fallback calculation for activities without calories/kilojoules
+      let cals = activity.calories || activity.kilojoules || 0;
+      if (cals === 0 && activity.moving_time > 0) {
+        const minutes = activity.moving_time / 60;
+        switch(activity.type) {
+            case 'Run': cals = minutes * 11; break;
+            case 'Ride': 
+            case 'VirtualRide': cals = minutes * 9; break;
+            case 'WeightTraining': cals = minutes * 5; break;
+            case 'Walk': cals = minutes * 4; break;
+            case 'Swim': cals = minutes * 7; break;
+            case 'Workout': cals = minutes * 5; break;
+            default: cals = minutes * 6; break;
+        }
+      }
+      
       aggregated[dateStr].kcal += Math.round(cals);
       
       aggregated[dateStr].duration += Math.round(activity.moving_time / 60);
