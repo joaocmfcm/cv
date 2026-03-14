@@ -77,10 +77,7 @@ const StravaHeatmap = () => {
     return (
         <div className="w-full flex flex-col gap-6 mt-16 mb-8 group/strava">
             <div className="flex flex-col gap-1">
-                <h3 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-100 flex items-center gap-3">
-                    <svg className="w-6 h-6 text-[#FC4C02] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169" />
-                    </svg>
+                <h3 className="text-2xl font-semibold tracking-tight text-primary flex items-center gap-3">
                     Strava activities
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400">A reflection of my physical effort over the past year.</p>
