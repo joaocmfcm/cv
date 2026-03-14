@@ -1,0 +1,45 @@
+name: Update Strava Data
+
+on:
+  schedule:
+    # Run every day at consistently at 3 AM UTC (early morning)
+    - cron: '0 3 * * *'
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  fetch-and-commit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Important: allows github actions to push code
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Strava Fetch Script
+        run: node scripts/fetch-strava.js
+        env:
+          STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+          STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+          STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # Check if there are any changes to public/strava-data.json
+          if git diff --quiet public/strava-data.json; then
+            echo "No new Strava activities to update"
+          else
+            git add public/strava-data.json
+            git commit -m "chore(strava): auto-update daily activities [skip ci]"
+            git push
+            echo "Successfully updated Strava data"
+          fi

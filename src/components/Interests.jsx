@@ -1,5 +1,6 @@
 import React from 'react';
 import { cvData } from '../cvData';
+import StravaHeatmap from './StravaHeatmap';
 
 const Interests = () => {
   return (
@@ -20,6 +21,11 @@ const Interests = () => {
             </span>
           </div>
         ))}
+      </div>
+
+      {/* Strava Activity Heatmap Area */}
+      <div className="mt-12">
+        <StravaHeatmap />
       </div>
     </section>
   );
