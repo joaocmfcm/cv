@@ -45,14 +45,14 @@ const StravaHeatmap = () => {
         loadStravaData();
     }, []);
 
-    // Calculate intensity level (0-4) based on kcal AND count
-    const getIntensity = (kcal, count) => {
+    // Calculate intensity level (0-4) based on duration AND count
+    const getIntensity = (duration, count) => {
         if (count === 0) return 0;
-        if (kcal === 0 && count > 0) return 1; // Activity done, but no calories tracked
-        if (kcal < 400) return 1;
-        if (kcal < 800) return 2;
-        if (kcal < 1200) return 3;
-        return 4;
+        if (duration === 0 && count > 0) return 1; // Activity done, but no time tracked
+        if (duration <= 30) return 1; // Up to 30 mins
+        if (duration <= 60) return 2; // Up to 1 hour
+        if (duration <= 90) return 3; // Up to 1h 30m
+        return 4; // More than 1h 30m
     };
 
     // Color map adapted to the current minimalist/apple aesthetic on a pure white background
@@ -114,7 +114,7 @@ const StravaHeatmap = () => {
                             }}
                         >
                             {mockData.map((dayData, index) => {
-                                const intensity = getIntensity(dayData.kcal, dayData.count);
+                                const intensity = getIntensity(dayData.duration, dayData.count);
 
                                 return (
                                     <div
@@ -125,7 +125,10 @@ const StravaHeatmap = () => {
                                         <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max px-3 py-1.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-[10px] sm:text-xs rounded-xl opacity-0 group-hover/day:opacity-100 pointer-events-none transition-all duration-200 scale-95 group-hover/day:scale-100 z-50 flex flex-col items-center shadow-xl border border-black/10 dark:border-white/10 origin-bottom">
                                             <span className="font-semibold">{dayData.date}</span>
                                             {dayData.count > 0 ? (
-                                                <span className="opacity-90 mt-0.5 font-mono">{dayData.count} activity(s) • {dayData.kcal} kcal</span>
+                                                <span className="opacity-90 mt-0.5 font-mono">
+                                                    {dayData.count} act{dayData.count > 1 ? 's' : ''} • {dayData.duration}m
+                                                    {dayData.kcal > 0 && ` • ${dayData.kcal} kcal`}
+                                                </span>
                                             ) : (
                                                 <span className="opacity-60 mt-0.5">Rest day</span>
                                             )}
@@ -144,8 +147,8 @@ const StravaHeatmap = () => {
                         </span>
                         <span className="flex items-center gap-1.5">
                             <span className="font-semibold text-gray-900 dark:text-gray-100">
-                                {mockData.reduce((acc, d) => acc + d.kcal, 0).toLocaleString()}
-                            </span> kcal
+                                {Math.round(mockData.reduce((acc, d) => acc + d.duration, 0) / 60).toLocaleString()}
+                            </span> hours trained
                         </span>
                     </div>
 
