@@ -54,8 +54,14 @@ export const cvData = {
     {
       degree: "MSc Computer Science",
       institution: "University of Coimbra",
-      period: "2014",
+      period: "2012 - 2014",
       grade: "17/20"
+    },
+    {
+      degree: "BSc Computer Science",
+      institution: "University of Coimbra",
+      period: "2007 - 2012",
+      grade: "12/20"
     }
   ],
   skills: {

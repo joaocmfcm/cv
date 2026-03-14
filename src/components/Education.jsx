@@ -16,7 +16,7 @@ const Education = () => {
             <div className="flex flex-col h-full justify-between">
               <div>
                 <span className="inline-block text-sm font-semibold text-secondary bg-background px-3 py-1 rounded-full mb-6">
-                  Class of {edu.period}
+                  {edu.period}
                 </span>
                 <h3 className="text-2xl font-bold text-primary mb-2 tracking-tight leading-tight">
                   {edu.degree}
