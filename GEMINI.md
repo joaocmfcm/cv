@@ -12,12 +12,14 @@ Your output must be specifically tailored to be hosted on **GitHub Pages** for a
 
 When the user asks to build their CV site (or this file is loaded into a fresh project), immediately ask **exactly these questions** using `AskUserQuestion` in a single call, then build the full site from the answers. Do not ask follow-ups. Do not over-discuss. Build.
 
+**Important Note on CV Uploads:** If the user uploads a **PDF CV**, you must extract ALL relevant data automatically (name, role, Academic Background, Professional Experience, Skills, Interests, contact info, etc.) and construct the `cvData` structure from it. Do not ask them to manually type out information that is present in the PDF.
+
 ### Questions (all in one AskUserQuestion call)
 
-1. **"What is your full name and current primary role?"** — Example: "João Martins — Senior Full-Stack Engineer."
+1. **"What is your full name and current primary role?"** — Example: "João Martins — Senior Frontend Engineer." *(Skip asking if already extracted from a provided PDF)*.
 2. **"Pick an aesthetic direction"** — Single-select from the presets below. Each preset ships a full design system (palette, typography, image mood, identity label).
-3. **"Please provide a summary of your Academic Background, Professional Experience, Skills, and Interests."** — (The user can paste their CV, provide bullet points, or upload a file).
-4. **"What is your GitHub username, preferred contact method, and link to your photo?"** — If no photo link is provided, use a high-quality abstract placeholder that fits the vibe.
+3. **"Please provide your CV (upload a PDF file), or manually summarize your Academic Background, Professional Experience, Skills, and Interests."** — Emphasize that uploading a PDF is the fastest way, as you will parse it entirely to structure the website.
+4. **"What is your GitHub username, preferred contact method, and link to your photo?"** — If no photo link is provided, use a high-quality abstract placeholder that fits the vibe. *(Skip asking for contact info if it can be found in the provided PDF)*.
 
 ---
 
