@@ -40,7 +40,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "No new Strava activities to update"
           else
-            git commit -m "chore(strava): auto-update daily activities [skip ci]"
+            git commit -m "chore(strava): auto-update daily activities"
             git push
             echo "Successfully updated Strava data"
           fi
