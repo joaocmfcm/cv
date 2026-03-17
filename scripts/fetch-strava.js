@@ -76,6 +76,11 @@ async function fetchStrava() {
 
   console.log(`Fetched a total of ${allActivities.length} activities.`);
 
+  if (allActivities.length === 0) {
+    console.error('ERROR: 0 activities fetched. This usually means the Strava API token in your GitHub Secrets does NOT have the "activity:read_all" scope, or there are no activities logged. Refusing to overwrite strava-data.json with zeroes.');
+    process.exit(1);
+  }
+
   // Aggregate logic
   const aggregated = {};
 
