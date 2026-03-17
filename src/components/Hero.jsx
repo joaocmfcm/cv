@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { cvData } from '../cvData';
-import { Download } from 'lucide-react';
+import { Download, ArrowRight } from 'lucide-react';
 
 const Hero = () => {
   const heroRef = useRef(null);
@@ -45,9 +45,9 @@ const Hero = () => {
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 hero-elem">
             <a 
               href="#contact"
-              className="px-8 py-4 bg-primary text-surface font-semibold rounded-full hover:scale-105 hover:shadow-apple-hover transition-all text-sm tracking-wide"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-surface font-semibold rounded-full hover:scale-105 hover:shadow-apple-hover transition-all text-sm tracking-wide"
             >
-              Contact Me
+              Contact Me <ArrowRight size={18} />
             </a>
             <a 
               href="JM  Currículo 2026.pdf" 

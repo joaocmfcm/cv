@@ -1,12 +1,17 @@
 import React from 'react';
 import { cvData } from '../cvData';
+import { Briefcase, Building2, Calendar, CheckCircle2 } from 'lucide-react';
 
 const Experience = () => {
   return (
     <section id="experience" className="pt-20 section-reveal">
       <div className="mb-16">
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-primary">Experience.</h2>
-        <p className="text-xl text-secondary mt-2 font-medium">Companies I've helped build.</p>
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-primary">
+          Experience.
+        </h2>
+        <p className="text-xl text-secondary mt-2 font-medium flex items-center gap-2">
+          <Briefcase size={20} className="text-secondary/80" /> Companies I've helped build.
+        </p>
       </div>
 
       <div className="relative border-l-2 border-border/60 ml-4 md:ml-8 space-y-12 pb-8">
@@ -20,10 +25,12 @@ const Experience = () => {
               <div className="flex flex-col md:flex-row md:items-start justify-between mb-4 gap-2">
                 <div>
                   <h3 className="text-2xl font-bold text-primary tracking-tight">{exp.role}</h3>
-                  <div className="text-lg font-medium text-primary/60 mt-1">{exp.company}</div>
+                  <div className="text-lg font-medium text-primary/60 mt-1 flex items-center gap-2">
+                    <Building2 size={18} /> {exp.company}
+                  </div>
                 </div>
-                <span className="text-sm font-semibold text-primary/70 bg-background px-3 py-1 rounded-full whitespace-nowrap border border-border/40">
-                  {exp.period}
+                <span className="text-sm font-semibold text-primary/70 bg-background px-3 py-1.5 rounded-full whitespace-nowrap border border-border/40 flex items-center gap-2 max-h-8">
+                  <Calendar size={14} /> {exp.period}
                 </span>
               </div>
               
@@ -35,7 +42,7 @@ const Experience = () => {
                 <ul className="space-y-3 mb-6">
                   {exp.achievements.map((achieve, i) => (
                     <li key={i} className="flex items-start gap-4 text-primary/80">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary/20 shrink-0 mt-2.5"></span>
+                      <CheckCircle2 size={16} className="text-primary/40 shrink-0 mt-1" />
                       <span className="leading-relaxed">{achieve}</span>
                     </li>
                   ))}

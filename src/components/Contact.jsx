@@ -1,6 +1,6 @@
 import React from 'react';
 import { cvData } from '../cvData';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, MessageSquare, MapPin } from 'lucide-react';
 
 const Contact = () => {
   const currentYear = new Date().getFullYear();
@@ -10,12 +10,12 @@ const Contact = () => {
       <div className="bg-surface border border-border/40 rounded-[3rem] p-10 md:p-20 shadow-apple text-center overflow-hidden relative">
 
         <div className="relative z-10 max-w-2xl mx-auto space-y-10">
-          <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-primary">
-            Let's talk.
+          <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-primary flex items-center justify-center gap-4">
+            <MessageSquare size={48} className="text-primary/80" /> Let's talk.
           </h2>
 
-          <p className="text-xl md:text-2xl text-secondary font-medium leading-relaxed">
-            Currently based in {cvData.location}.
+          <p className="text-xl md:text-2xl text-secondary font-medium leading-relaxed flex items-center justify-center gap-2">
+            <MapPin size={24} className="text-secondary/70" /> Currently based in {cvData.location}.
           </p>
 
           <div className="pt-6">

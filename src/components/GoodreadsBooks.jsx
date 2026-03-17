@@ -23,10 +23,10 @@ const GoodreadsBooks = () => {
         const readData = await readRes.json();
 
         setCurrentlyReading(currentlyReadingData.items ? currentlyReadingData.items.map(parseGoodreadsItem).slice(0, 5) : []);
-        
-        // Show only the latest 8 read books to keep the UI clean
+
+        // Show only the latest 10 read books to keep the UI clean
         let readItems = readData.items ? readData.items.map(parseGoodreadsItem) : [];
-        setReadBooks(readItems.slice(0, 5));
+        setReadBooks(readItems.slice(0, 10));
 
       } catch (error) {
         console.error("Error fetching Goodreads data:", error);
@@ -47,7 +47,7 @@ const GoodreadsBooks = () => {
   const parseGoodreadsItem = (item) => {
     const imgMatch = item.description.match(/<img[^>]+src="([^">]+)"/);
     const authorMatch = item.description.match(/author:\s*(.+?)<br>/);
-    
+
     // Clean up title (sometimes it includes the author name after a hyphen in the RSS)
     let cleanTitle = item.title.split(' - ')[0].trim();
     // Unescape common HTML entities
@@ -63,7 +63,7 @@ const GoodreadsBooks = () => {
   };
 
   const BookCard = ({ book }) => (
-    <a 
+    <a
       href={book.link}
       target="_blank"
       rel="noopener noreferrer"
@@ -71,9 +71,9 @@ const GoodreadsBooks = () => {
     >
       <div className="relative w-full aspect-[2/3] mb-4 bg-background/50 rounded-xl overflow-hidden">
         {book.cover ? (
-          <img 
-            src={book.cover} 
-            alt={book.title} 
+          <img
+            src={book.cover}
+            alt={book.title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />
@@ -115,11 +115,11 @@ const GoodreadsBooks = () => {
     <div className="w-full flex flex-col gap-6 mt-16 mb-8">
       <div className="flex flex-col gap-1">
         <h3 className="text-2xl font-semibold tracking-tight text-primary flex items-center gap-3">
-            Library
+          Library
         </h3>
         <p className="text-gray-500 dark:text-gray-400">Books I'm currently reading and my recent completions.</p>
       </div>
-      
+
       {currentlyReading.length > 0 && (
         <div className="mb-12">
           <h4 className="text-xl font-semibold text-secondary mb-6 flex items-center gap-2">
