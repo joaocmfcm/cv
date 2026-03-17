@@ -1,6 +1,7 @@
 import React from 'react';
 import { cvData } from '../cvData';
 import StravaHeatmap from './StravaHeatmap';
+import GoodreadsBooks from './GoodreadsBooks';
 
 const Interests = () => {
   return (
@@ -27,6 +28,9 @@ const Interests = () => {
       <div className="mt-12">
         <StravaHeatmap />
       </div>
+
+      {/* Goodreads Books Area */}
+      <GoodreadsBooks />
     </section>
   );
 };
