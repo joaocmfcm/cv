@@ -89,7 +89,7 @@ const StravaHeatmap = () => {
                     <div className="flex gap-2 sm:gap-3 w-full">
                         {/* Days of Week Y-Axis (Desktop Only) */}
                         <div className="hidden sm:flex flex-col text-[10px] text-gray-400 font-mono mt-[24px] mb-[1px] gap-[3px] md:gap-1"
-                            style={{ justifyContent: 'space-between' }}>
+                            style={{ justifyContent: 'space-between', minWidth: 'min-content' }}>
                             <span className="leading-none">Sun</span>
                             <span className="leading-none">Mon</span>
                             <span className="leading-none">Tue</span>
@@ -99,7 +99,7 @@ const StravaHeatmap = () => {
                             <span className="leading-none">Sat</span>
                         </div>
 
-                        <div className="flex-1 w-full flex flex-col">
+                        <div className="flex-1 w-full flex flex-col min-w-0">
                             {/* 12 Months Spread Evenly (Desktop Only) */}
                             <div className="hidden sm:flex justify-between w-full text-[10px] md:text-xs text-gray-400 font-mono mb-2 px-1">
                                 {months.map((m, idx) => <span key={idx}>{m}</span>)}
@@ -112,13 +112,11 @@ const StravaHeatmap = () => {
 
                             {/* Hybrid Layout: Flex-Wrap on Mobile, CSS Grid on Desktop */}
                             <div
-                                className="w-full flex flex-wrap sm:grid gap-1 sm:gap-[3px] md:gap-1 flex-1"
+                                className="w-full flex flex-wrap sm:grid gap-[4px] sm:gap-[3px] md:gap-1 flex-1"
                                 style={{
-                                    ...(window.innerWidth >= 640 ? {
-                                        gridAutoFlow: 'column',
-                                        gridTemplateRows: 'repeat(7, minmax(0, 1fr))',
-                                        gridTemplateColumns: `repeat(${columnsCount}, minmax(0, 1fr))`
-                                    } : {})
+                                    gridAutoFlow: 'column',
+                                    gridTemplateRows: 'repeat(7, minmax(0, 1fr))',
+                                    gridTemplateColumns: `repeat(${columnsCount}, minmax(0, 1fr))`
                                 }}
                             >
                                 {mockData.map((dayData, index) => {
@@ -127,7 +125,7 @@ const StravaHeatmap = () => {
                                     return (
                                         <div
                                             key={index}
-                                            className={`aspect-square w-[12px] sm:w-full rounded-[2px] sm:rounded-[3px] ${colorMap[intensity]} hover:ring-[1px] sm:hover:ring-2 hover:ring-gray-300 dark:hover:ring-gray-400 hover:scale-[1.2] transition-all duration-200 cursor-crosshair relative group/day z-10 hover:z-20`}
+                                            className={`aspect-square w-[18px] sm:w-full rounded-[2px] sm:rounded-[3px] ${colorMap[intensity]} hover:ring-[1px] sm:hover:ring-2 hover:ring-gray-300 dark:hover:ring-gray-400 hover:scale-[1.2] transition-all duration-200 cursor-crosshair relative group/day z-10 hover:z-20`}
                                         >
                                             {/* Tooltip on Hover */}
                                             <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max px-3 py-1.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-[10px] sm:text-xs rounded-xl opacity-0 group-hover/day:opacity-100 pointer-events-none transition-all duration-200 scale-95 group-hover/day:scale-100 z-50 flex flex-col items-center shadow-xl border border-black/10 dark:border-white/10 origin-bottom">
