@@ -85,10 +85,10 @@ const StravaHeatmap = () => {
 
             <div className="p-4 sm:p-6 bg-white dark:bg-[#0A0A0A] backdrop-blur-xl rounded-[1.5rem] sm:rounded-[2rem] border border-gray-100 dark:border-white/5 shadow-apple transition-colors duration-500 w-full relative">
 
-                <div className="w-full overflow-x-auto pb-4 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0 custom-scrollbar">
-                    <div className="flex gap-2 sm:gap-3 min-w-[700px] sm:min-w-full w-full">
-                        {/* Days of Week Y-Axis */}
-                        <div className="hidden sm:flex flex-col text-[10px] text-gray-400 font-mono mt-[20px] md:mt-[24px] mb-[1px] gap-[2px] sm:gap-[3px] md:gap-1"
+                <div className="w-full">
+                    <div className="flex gap-2 sm:gap-3 w-full">
+                        {/* Days of Week Y-Axis (Desktop Only) */}
+                        <div className="hidden sm:flex flex-col text-[10px] text-gray-400 font-mono mt-[24px] mb-[1px] gap-[3px] md:gap-1"
                             style={{ justifyContent: 'space-between' }}>
                             <span className="leading-none">Sun</span>
                             <span className="leading-none">Mon</span>
@@ -100,18 +100,25 @@ const StravaHeatmap = () => {
                         </div>
 
                         <div className="flex-1 w-full flex flex-col">
-                            {/* 12 Months Spread Evenly */}
-                            <div className="flex justify-between w-full text-[10px] md:text-xs text-gray-400 font-mono mb-2 px-1">
+                            {/* 12 Months Spread Evenly (Desktop Only) */}
+                            <div className="hidden sm:flex justify-between w-full text-[10px] md:text-xs text-gray-400 font-mono mb-2 px-1">
                                 {months.map((m, idx) => <span key={idx}>{m}</span>)}
                             </div>
+                            
+                            {/* Mobile specific header */}
+                            <div className="flex sm:hidden justify-between w-full text-[10px] text-gray-400 font-mono mb-3">
+                                <span>Last 365 days</span>
+                            </div>
 
-                            {/* The scaling CSS Grid with arbitrary Tailwind class grid-rows-[7] */}
+                            {/* Hybrid Layout: Flex-Wrap on Mobile, CSS Grid on Desktop */}
                             <div
-                                className="w-full grid gap-[2px] sm:gap-[3px] md:gap-1 flex-1"
+                                className="w-full flex flex-wrap sm:grid gap-1 sm:gap-[3px] md:gap-1 flex-1"
                                 style={{
-                                    gridAutoFlow: 'column',
-                                    gridTemplateRows: 'repeat(7, minmax(0, 1fr))',
-                                    gridTemplateColumns: `repeat(${columnsCount}, minmax(0, 1fr))`
+                                    ...(window.innerWidth >= 640 ? {
+                                        gridAutoFlow: 'column',
+                                        gridTemplateRows: 'repeat(7, minmax(0, 1fr))',
+                                        gridTemplateColumns: `repeat(${columnsCount}, minmax(0, 1fr))`
+                                    } : {})
                                 }}
                             >
                                 {mockData.map((dayData, index) => {
@@ -120,7 +127,7 @@ const StravaHeatmap = () => {
                                     return (
                                         <div
                                             key={index}
-                                            className={`aspect-square w-full rounded-[2px] sm:rounded-[3px] ${colorMap[intensity]} hover:ring-[1px] sm:hover:ring-2 hover:ring-gray-300 dark:hover:ring-gray-400 hover:scale-[1.2] transition-all duration-200 cursor-crosshair relative group/day z-10 hover:z-20`}
+                                            className={`aspect-square w-[12px] sm:w-full rounded-[2px] sm:rounded-[3px] ${colorMap[intensity]} hover:ring-[1px] sm:hover:ring-2 hover:ring-gray-300 dark:hover:ring-gray-400 hover:scale-[1.2] transition-all duration-200 cursor-crosshair relative group/day z-10 hover:z-20`}
                                         >
                                             {/* Tooltip on Hover */}
                                             <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max px-3 py-1.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-[10px] sm:text-xs rounded-xl opacity-0 group-hover/day:opacity-100 pointer-events-none transition-all duration-200 scale-95 group-hover/day:scale-100 z-50 flex flex-col items-center shadow-xl border border-black/10 dark:border-white/10 origin-bottom">
@@ -142,7 +149,7 @@ const StravaHeatmap = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mt-5 sm:mt-6 text-[10px] sm:text-xs text-gray-500 dark:text-gray-400 font-mono gap-3 sm:gap-0">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mt-6 text-[10px] sm:text-xs text-gray-500 dark:text-gray-400 font-mono gap-4 sm:gap-0">
                     <div className="flex gap-4">
                         <span className="flex items-center gap-1.5">
                             <span className="font-semibold text-gray-900 dark:text-gray-100">{mockData.filter(d => d.count > 0).length}</span> active days
