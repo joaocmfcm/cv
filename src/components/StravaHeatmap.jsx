@@ -56,12 +56,13 @@ const StravaHeatmap = () => {
     };
 
     // Color map adapted to the current minimalist/apple aesthetic on a pure white background
+    // Uses the app's primary accent color (sky-500) for a cohesive look
     const colorMap = {
         0: 'bg-[#F3F4F6] shadow-sm border border-black/5 dark:border-white/5 dark:bg-[#161B22]',
-        1: 'bg-[#9FB6CD]/40 dark:bg-[#9FB6CD]/50 border border-black/5 dark:border-transparent',
-        2: 'bg-[#9FB6CD]/80 dark:bg-[#9FB6CD]/80 border border-black/5 dark:border-transparent',
-        3: 'bg-[#E1A2B8]/90 dark:bg-[#E1A2B8]/90 border border-black/5 dark:border-transparent',
-        4: 'bg-[#E1A2B8] dark:bg-[#f29bbb] border border-black/5 dark:border-transparent',
+        1: 'bg-sky-500 dark:bg-sky-500/80 border border-black/5 dark:border-transparent',
+        2: 'bg-sky-600 dark:bg-sky-600/80 border border-black/5 dark:border-transparent',
+        3: 'bg-sky-700 dark:bg-sky-700/90 border border-black/5 dark:border-transparent',
+        4: 'bg-sky-800 dark:bg-sky-800 border border-black/5 dark:border-transparent shadow-sm',
     };
 
     const months = [];
@@ -104,7 +105,7 @@ const StravaHeatmap = () => {
                             <div className="hidden sm:flex justify-between w-full text-[10px] md:text-xs text-gray-400 font-mono mb-2 px-1">
                                 {months.map((m, idx) => <span key={idx}>{m}</span>)}
                             </div>
-                            
+
                             {/* Mobile specific header */}
                             <div className="flex sm:hidden justify-between w-full text-[10px] text-gray-400 font-mono mb-3">
                                 <span>Last 365 days</span>
