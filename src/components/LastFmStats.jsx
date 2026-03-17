@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import fetchJsonp from 'fetch-jsonp';
-import { Music, User, Disc, CalendarDays, ExternalLink, Headphones } from 'lucide-react';
+import { Disc, ExternalLink } from 'lucide-react';
 
 const API_KEY = '22352886c44c422eb3f90bc78cc6d996';
 const USERNAME = 'tw1sted1989';
@@ -34,7 +34,7 @@ const LastFmStats = () => {
         const artistsData = await artistsRes.json();
 
         const lastFmArtists = artistsData.topartists?.artist || [];
-        
+
         // Fetch higher quality artist pictures from Deezer API as Last.fm removed them
         const processedArtists = await Promise.all(lastFmArtists.map(async (artist) => {
           let deezerImageUrl = null;
@@ -51,7 +51,7 @@ const LastFmStats = () => {
 
           const defaultStarUrl = '2a96cbd8b46e442fc41c2b86b821562f';
           const lastfmImageUrl = artist.image && artist.image[3] ? artist.image[3]['#text'] : '';
-          
+
           return {
             ...artist,
             coverUrl: deezerImageUrl || (lastfmImageUrl && !lastfmImageUrl.includes(defaultStarUrl) ? lastfmImageUrl : null),
@@ -99,66 +99,61 @@ const LastFmStats = () => {
     fetchAlbums();
   }, []);
 
-  const TabButton = ({ active, label, onClick }) => (
-    <button
-      onClick={onClick}
-      className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${active
-        ? 'bg-primary text-surface shadow-md'
-        : 'bg-surface text-secondary hover:text-primary hover:bg-surface/80 border border-border/40'
-        }`}
-    >
-      {label}
-    </button>
-  );
-
   return (
     <div className="w-full flex flex-col gap-8 mt-24 mb-8 section-reveal">
-      <div className="flex flex-col gap-1">
-        <h3 className="text-2xl font-semibold tracking-tight text-primary flex items-center gap-3">
-          On Repeat
-        </h3>
-        <p className="text-gray-500 dark:text-gray-400">
-          My most played tracks, artists and albums.
-        </p>
-      </div>
-
-      <div className="flex flex-col gap-8">
-        {/* Period Selector */}
-        <div className="flex flex-wrap gap-2">
-          {PERIODS.map((p) => (
-            <TabButton
-              key={p.value}
-              active={period === p.value}
-              label={p.label}
-              onClick={() => setPeriod(p.value)}
-            />
-          ))}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="flex flex-col gap-1">
+          <h3 className="text-2xl font-semibold tracking-tight text-primary">
+            On Repeat
+          </h3>
+          <p className="text-gray-500 dark:text-gray-400">
+            My most played tracks and artists.
+          </p>
         </div>
 
-        {/* Top Tracks (2 columns) */}
+        {/* Period Selector */}
+        <div className="flex bg-surface p-1 rounded-full border border-border/40 shadow-sm w-fit">
+          {PERIODS.map((p) => (
+            <button
+              key={p.value}
+              onClick={() => setPeriod(p.value)}
+              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 ${period === p.value
+                ? 'bg-primary text-surface shadow-md border border-transparent'
+                : 'bg-transparent text-secondary hover:text-primary'
+                }`}
+            >
+              {p.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8  rounded-3xl ">
+
+        {/* Top Tracks */}
         <div className="flex flex-col gap-4">
-          <h4 className="text-lg font-semibold text-secondary flex items-center gap-2">
-            <Music size={18} /> Top Tracks
+          <h4 className="text-lg font-semibold text-secondary">
+            Top Tracks
           </h4>
-          <div className="bg-surface border border-border/40 rounded-2xl p-2 shadow-apple overflow-hidden">
+          <div className="bg-surface border border-border/40 rounded-2xl p-2 shadow-apple overflow-hidden h-full flex flex-col justify-between">
             {loading ? (
-              <div className="animate-pulse grid grid-cols-1 md:grid-cols-2 gap-2 p-2">
+              <div className="animate-pulse grid grid-cols-1 gap-2 p-2">
                 {[...Array(10)].map((_, i) => (
                   <div key={i} className="h-12 bg-background/50 rounded-xl w-full" />
                 ))}
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1">
+              <div className="flex flex-col flex-1 justify-between">
                 {topTracks.map((track, i) => (
                   <a
                     key={`${track.name}-${i}`}
                     href={track.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center justify-between p-2 rounded-xl hover:bg-background/80 transition-colors"
+                    className="group flex items-center justify-between p-2 rounded-xl hover:bg-background/80 transition-colors flex-1"
                   >
                     <div className="flex items-center gap-3 overflow-hidden">
-                      <span className="text-secondary/50 font-mono text-sm w-4 text-right">
+                      <span className="text-secondary/50 font-mono text-sm w-4 text-right shrink-0">
                         {i + 1}
                       </span>
                       <div className="flex flex-col overflow-hidden">
@@ -169,82 +164,80 @@ const LastFmStats = () => {
                           <span className="text-sm text-secondary truncate">
                             {track.artist.name}
                           </span>
-                          <span className="text-xs text-secondary/50 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <span className="text-[10px] text-secondary/50 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                             • {track.playcount} plays
                           </span>
                         </div>
                       </div>
                     </div>
-                    <ExternalLink size={14} className="text-secondary/30 group-hover:text-blue-500 opacity-0 group-hover:opacity-100 transition-all" />
+                    <ExternalLink size={14} className="text-secondary/30 group-hover:text-blue-500 opacity-0 group-hover:opacity-100 transition-all shrink-0 ml-2" />
                   </a>
                 ))}
               </div>
             )}
           </div>
         </div>
-      </div>
 
-      {/* Top Artists - Grid Layout */}
-      <div className="mt-8 flex flex-col gap-6">
-        <div className="flex flex-col gap-1">
-          <h4 className="text-xl font-semibold text-secondary flex items-center gap-2">
-            <User size={20} /> Top Artists
+        {/* Top Artists */}
+        <div className="flex flex-col gap-4">
+          <h4 className="text-lg font-semibold text-secondary">
+            Top Artists
           </h4>
+          {loading ? (
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2 h-full content-between">
+              {[...Array(10)].map((_, i) => (
+                <div key={i} className="flex flex-col items-center justify-center text-center p-2 sm:p-3 bg-surface border border-border/40 rounded-2xl animate-pulse">
+                  <div className="w-full aspect-square max-w-[70px] mb-2 bg-background/50 rounded-full" />
+                  <div className="h-2 bg-background/50 w-2/3 rounded mb-1" />
+                  <div className="h-[6px] bg-background/50 w-1/2 rounded" />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2 h-full content-between">
+              {topArtists.map((artist, i) => (
+                <a
+                  key={`${artist.mbid || artist.name}-${i}`}
+                  href={artist.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative flex flex-col items-center text-center p-2 sm:p-3 hover:-translate-y-1 transition-all duration-300 bg-surface border border-border/40 rounded-2xl shadow-sm hover:shadow-apple-hover"
+                >
+                  <div className="absolute top-2 right-2 bg-background/90 text-primary text-[10px] font-mono w-5 h-5 flex items-center justify-center rounded-full border border-border/40 shadow-sm z-10 opacity-0 group-hover:opacity-100 transition-all scale-90 group-hover:scale-100">
+                    {i + 1}
+                  </div>
+                  <div className="relative w-full aspect-square max-w-[70px] mb-1.5 bg-background/50 rounded-full overflow-hidden border border-border/20 shadow-inner group-hover:shadow-sm transition-all">
+                    {artist.coverUrl ? (
+                      <img
+                        src={artist.coverUrl}
+                        alt={artist.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-secondary/40 text-[10px] font-semibold uppercase">
+                        {artist.initials}
+                      </div>
+                    )}
+                  </div>
+                  <h4 className="font-semibold text-primary text-[11px] md:text-xs line-clamp-1 w-full leading-tight mb-0.5 group-hover:text-blue-500 transition-colors" title={artist.name}>
+                    {artist.name}
+                  </h4>
+                  <p className="text-[9px] text-secondary font-medium">
+                    {artist.playcount} plays
+                  </p>
+                </a>
+              ))}
+            </div>
+          )}
         </div>
-        
-        {loading ? (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 animate-pulse">
-            {[...Array(10)].map((_, i) => (
-              <div key={i} className="flex flex-col items-center gap-3">
-                <div className="w-full aspect-square rounded-full bg-surface" />
-                <div className="h-4 bg-surface w-3/4 rounded" />
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-            {topArtists.map((artist, i) => (
-              <a
-                key={`${artist.mbid || artist.name}-${i}`}
-                href={artist.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative flex flex-col items-center text-center p-2 sm:p-4 hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className="absolute top-2 right-2 bg-background/80 backdrop-blur-md text-primary text-xs font-mono w-6 h-6 flex items-center justify-center rounded-full border border-border/40 shadow-sm z-10 transition-transform group-hover:scale-110">
-                  {i + 1}
-                </div>
-                <div className="relative w-full aspect-square mb-4 bg-surface rounded-full overflow-hidden border border-border/40 shadow-apple group-hover:shadow-apple-hover transition-all">
-                  {artist.coverUrl ? (
-                    <img
-                      src={artist.coverUrl}
-                      alt={artist.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-background/50 text-secondary/40 text-4xl font-semibold uppercase">
-                      {artist.initials}
-                    </div>
-                  )}
-                </div>
-                <h4 className="font-semibold text-primary line-clamp-1 w-full leading-tight mb-1 group-hover:text-blue-500 transition-colors" title={artist.name}>
-                  {artist.name}
-                </h4>
-                <p className="text-xs text-secondary font-medium mt-1">
-                  {artist.playcount} plays
-                </p>
-              </a>
-            ))}
-          </div>
-        )}
       </div>
 
       {/* Heavy Rotation Albums - All Time ONLY */}
       <div className="mt-8 flex flex-col gap-6">
         <div className="flex flex-col gap-1">
-          <h4 className="text-xl font-semibold text-secondary flex items-center gap-2">
-            <Disc size={20} /> All-Time Heavy Rotation
+          <h4 className="text-xl font-semibold text-secondary">
+            All-Time Heavy Rotation
           </h4>
           <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">My top 10 most played albums of all time.</p>
         </div>

@@ -32,8 +32,8 @@ const Interests = () => {
 
       <div className="flex flex-wrap gap-4">
         {cvData.interests.map((interest, idx) => (
-          <div 
-            key={idx} 
+          <div
+            key={idx}
             className="px-6 py-4 bg-surface border border-border/40 rounded-full shadow-apple hover:shadow-apple-hover hover:-translate-y-1 transition-all duration-300 group cursor-default flex items-center gap-2"
           >
             <span className="text-primary/50 group-hover:text-primary transition-colors">
@@ -46,16 +46,18 @@ const Interests = () => {
         ))}
       </div>
 
+
       {/* Strava Activity Heatmap Area */}
       <div className="mt-12">
         <StravaHeatmap />
       </div>
 
+      {/* Goodreads Books Area */}
+      <GoodreadsBooks />
+
       {/* Last.fm Stats Area */}
       <LastFmStats />
 
-      {/* Goodreads Books Area */}
-      <GoodreadsBooks />
     </section>
   );
 };

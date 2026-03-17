@@ -123,10 +123,10 @@ const GoodreadsBooks = () => {
       {currentlyReading.length > 0 && (
         <div className="mb-12">
           <h4 className="text-xl font-semibold text-secondary mb-6 flex items-center gap-2">
-            <span className="relative flex h-3 w-3">
+            {/* <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
-            </span>
+            </span> */}
             Currently Reading
           </h4>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
