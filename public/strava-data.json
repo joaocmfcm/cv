@@ -7,15 +7,15 @@
   },
   {
     "date": "2025-03-17",
-    "count": 2,
+    "count": 0,
     "kcal": 0,
-    "duration": 68
+    "duration": 0
   },
   {
     "date": "2025-03-18",
-    "count": 1,
+    "count": 0,
     "kcal": 0,
-    "duration": 59
+    "duration": 0
   },
   {
     "date": "2025-03-19",
@@ -2197,6 +2197,24 @@
   },
   {
     "date": "2026-03-17",
+    "count": 1,
+    "kcal": 0,
+    "duration": 64
+  },
+  {
+    "date": "2026-03-18",
+    "count": 0,
+    "kcal": 0,
+    "duration": 0
+  },
+  {
+    "date": "2026-03-19",
+    "count": 2,
+    "kcal": 450,
+    "duration": 112
+  },
+  {
+    "date": "2026-03-20",
     "count": 0,
     "kcal": 0,
     "duration": 0
