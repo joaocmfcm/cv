@@ -1,6 +1,8 @@
 import React from 'react';
 import { cvData } from '../cvData';
 import { Briefcase, Building2, Calendar, CheckCircle2 } from 'lucide-react';
+import { getSkillIcon } from './SkillIcon';
+
 
 const Experience = () => {
   return (
@@ -51,7 +53,8 @@ const Experience = () => {
 
               <div className="flex flex-wrap gap-2 pt-5 border-t border-border/40">
                 {exp.stack.map(tech => (
-                  <span key={tech} className="px-3 py-1.5 text-sm font-medium bg-background border border-border/40 text-primary/70 rounded-full cursor-default hover:bg-border/30 transition-colors">
+                  <span key={tech} className="px-3 py-1.5 text-sm font-medium bg-background border border-border/40 text-primary/70 rounded-full cursor-default hover:bg-border/30 transition-colors flex items-center gap-1.5">
+                    {getSkillIcon(tech, 14)}
                     {tech}
                   </span>
                 ))}

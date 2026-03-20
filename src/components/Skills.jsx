@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { cvData } from '../cvData';
 import { Code2, MonitorSmartphone, Network, Wrench } from 'lucide-react';
+import { getSkillIcon } from './SkillIcon';
 
 const Skills = () => {
   const [activeCategory, setActiveCategory] = useState(null);
@@ -19,6 +20,7 @@ const Skills = () => {
       default: return null;
     }
   };
+
 
   return (
     <section id="skills" className="pt-20 section-reveal">
@@ -54,17 +56,21 @@ const Skills = () => {
         <div className="flex-1">
           <div className="flex flex-wrap gap-3">
             {categories.map((cat) => (
-              cvData.skills[cat].map((skill, idx) => (
-                 <span 
-                   key={`${cat}-${idx}`} 
-                   className={`px-5 py-3 text-sm md:text-base font-semibold rounded-2xl transition-all duration-500 
-                     ${activeCategory === null || activeCategory === cat 
-                        ? 'bg-surface border border-border/40 text-primary shadow-apple hover:shadow-apple-hover hover:-translate-y-1' 
-                        : 'bg-surface/50 border-transparent text-secondary/30 scale-95'}`}
-                 >
-                   {skill}
-                 </span>
-              ))
+              cvData.skills[cat].map((skill, idx) => {
+                const icon = getSkillIcon(skill);
+                return (
+                  <span 
+                    key={`${cat}-${idx}`} 
+                    className={`px-5 py-3 text-sm md:text-base font-semibold rounded-2xl transition-all duration-500 flex items-center gap-2.5
+                      ${activeCategory === null || activeCategory === cat 
+                         ? 'bg-surface border border-border/40 text-primary shadow-apple hover:shadow-apple-hover hover:-translate-y-1' 
+                         : 'bg-surface/50 border-transparent text-secondary/30 scale-95'}`}
+                  >
+                    {icon}
+                    {skill}
+                  </span>
+                );
+              })
             ))}
           </div>
         </div>
@@ -74,3 +80,4 @@ const Skills = () => {
 };
 
 export default Skills;
+
