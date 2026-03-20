@@ -1,9 +1,8 @@
-import React from 'react';
 import { cvData } from '../cvData';
 import StravaHeatmap from './StravaHeatmap';
 import GoodreadsBooks from './GoodreadsBooks';
 import LastFmStats from './LastFmStats';
-import { Heart, Dumbbell, Bike, Activity, ChefHat, BookOpen, Film, Wifi, Box } from 'lucide-react';
+import { Compass, Dumbbell, Bike, Activity, ChefHat, BookOpen, Film, Wifi, Box } from 'lucide-react';
 
 const Interests = () => {
   const getInterestIcon = (interest) => {
@@ -26,7 +25,7 @@ const Interests = () => {
           Interests.
         </h2>
         <p className="text-xl text-secondary mt-2 font-medium flex items-center gap-2">
-          <Heart size={20} className="text-secondary/80" /> Beyond the code.
+          <Compass size={20} className="text-secondary/80" /> Beyond the code.
         </p>
       </div>
 
@@ -34,7 +33,7 @@ const Interests = () => {
         {cvData.interests.map((interest, idx) => (
           <div
             key={idx}
-            className="px-6 py-4 bg-surface border border-border/40 rounded-full shadow-apple hover:shadow-apple-hover hover:-translate-y-1 transition-all duration-300 group cursor-default flex items-center gap-2"
+            className="flex-auto md:flex-1 min-w-[140px] px-6 py-4 bg-surface border border-border/40 rounded-full shadow-apple hover:shadow-apple-hover hover:-translate-y-1 transition-all duration-300 group cursor-default flex items-center justify-center gap-2"
           >
             <span className="text-primary/50 group-hover:text-primary transition-colors">
               {getInterestIcon(interest)}
