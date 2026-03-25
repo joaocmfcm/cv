@@ -7,9 +7,9 @@
   },
   {
     "date": "2025-03-24",
-    "count": 5,
+    "count": 0,
     "kcal": 0,
-    "duration": 114
+    "duration": 0
   },
   {
     "date": "2025-03-25",
@@ -2197,6 +2197,12 @@
   },
   {
     "date": "2026-03-24",
+    "count": 2,
+    "kcal": 507,
+    "duration": 124
+  },
+  {
+    "date": "2026-03-25",
     "count": 0,
     "kcal": 0,
     "duration": 0
