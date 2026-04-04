@@ -2215,6 +2215,12 @@
   },
   {
     "date": "2026-04-03",
+    "count": 1,
+    "kcal": 462,
+    "duration": 48
+  },
+  {
+    "date": "2026-04-04",
     "count": 0,
     "kcal": 0,
     "duration": 0
