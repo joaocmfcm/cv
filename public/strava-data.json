@@ -25,9 +25,9 @@
   },
   {
     "date": "2025-06-05",
-    "count": 2,
+    "count": 0,
     "kcal": 0,
-    "duration": 89
+    "duration": 0
   },
   {
     "date": "2025-06-06",
@@ -2215,6 +2215,12 @@
   },
   {
     "date": "2026-06-05",
+    "count": 1,
+    "kcal": 0,
+    "duration": 53
+  },
+  {
+    "date": "2026-06-06",
     "count": 0,
     "kcal": 0,
     "duration": 0
