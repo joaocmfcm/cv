@@ -13,9 +13,9 @@
   },
   {
     "date": "2025-08-12",
-    "count": 2,
-    "kcal": 299,
-    "duration": 110
+    "count": 0,
+    "kcal": 0,
+    "duration": 0
   },
   {
     "date": "2025-08-13",
@@ -2203,6 +2203,12 @@
   },
   {
     "date": "2026-08-12",
+    "count": 2,
+    "kcal": 750,
+    "duration": 104
+  },
+  {
+    "date": "2026-08-13",
     "count": 0,
     "kcal": 0,
     "duration": 0
