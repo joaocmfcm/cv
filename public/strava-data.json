@@ -1,15 +1,15 @@
 [
   {
     "date": "2025-08-31",
-    "count": 1,
-    "kcal": 586,
-    "duration": 59
+    "count": 0,
+    "kcal": 0,
+    "duration": 0
   },
   {
     "date": "2025-09-01",
-    "count": 2,
-    "kcal": 293,
-    "duration": 91
+    "count": 1,
+    "kcal": 0,
+    "duration": 56
   },
   {
     "date": "2025-09-02",
@@ -2191,6 +2191,12 @@
   },
   {
     "date": "2026-08-31",
+    "count": 1,
+    "kcal": 0,
+    "duration": 64
+  },
+  {
+    "date": "2026-09-01",
     "count": 0,
     "kcal": 0,
     "duration": 0
