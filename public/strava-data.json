@@ -19,15 +19,15 @@
   },
   {
     "date": "2025-09-03",
-    "count": 1,
+    "count": 0,
     "kcal": 0,
-    "duration": 56
+    "duration": 0
   },
   {
     "date": "2025-09-04",
-    "count": 3,
-    "kcal": 438,
-    "duration": 117
+    "count": 2,
+    "kcal": 0,
+    "duration": 69
   },
   {
     "date": "2025-09-05",
@@ -2209,6 +2209,12 @@
   },
   {
     "date": "2026-09-03",
+    "count": 1,
+    "kcal": 0,
+    "duration": 61
+  },
+  {
+    "date": "2026-09-04",
     "count": 0,
     "kcal": 0,
     "duration": 0
