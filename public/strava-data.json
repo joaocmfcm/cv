@@ -1,47 +1,5 @@
 [
   {
-    "date": "2025-09-28",
-    "count": 0,
-    "kcal": 0,
-    "duration": 0
-  },
-  {
-    "date": "2025-09-29",
-    "count": 0,
-    "kcal": 0,
-    "duration": 0
-  },
-  {
-    "date": "2025-09-30",
-    "count": 0,
-    "kcal": 0,
-    "duration": 0
-  },
-  {
-    "date": "2025-10-01",
-    "count": 0,
-    "kcal": 0,
-    "duration": 0
-  },
-  {
-    "date": "2025-10-02",
-    "count": 0,
-    "kcal": 0,
-    "duration": 0
-  },
-  {
-    "date": "2025-10-03",
-    "count": 1,
-    "kcal": 0,
-    "duration": 45
-  },
-  {
-    "date": "2025-10-04",
-    "count": 1,
-    "kcal": 370,
-    "duration": 45
-  },
-  {
     "date": "2025-10-05",
     "count": 1,
     "kcal": 0,
@@ -2221,6 +2179,12 @@
   },
   {
     "date": "2026-10-03",
+    "count": 1,
+    "kcal": 0,
+    "duration": 58
+  },
+  {
+    "date": "2026-10-04",
     "count": 0,
     "kcal": 0,
     "duration": 0
