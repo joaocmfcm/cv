@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
+    "test:goodreads": "python3 -m unittest discover -s scripts/tests -p 'test_*.py' -v",
     "preview": "vite preview"
   },
   "dependencies": {

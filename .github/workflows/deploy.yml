@@ -4,9 +4,10 @@ on:
   push:
     branches: ["main"]
 
-  # Trigger when the Strava fetch workflow completes
+  # GITHUB_TOKEN data commits do not trigger push workflows.
   workflow_run:
-    workflows: ["Update Strava Data"]
+    workflows: ["Update Strava Data", "Update Goodreads Data"]
+    branches: [main]
     types:
       - completed
 
@@ -30,6 +31,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Data workflows commit after their triggering SHA. Build latest main.
+          ref: main
+      - name: Test Goodreads parser and snapshot handling
+        run: python3 -m unittest discover -s scripts/tests -p 'test_*.py' -v
       - name: Setup Node
         uses: actions/setup-node@v4
         with:

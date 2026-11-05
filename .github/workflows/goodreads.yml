@@ -1,0 +1,35 @@
+name: Update Goodreads Data
+
+on:
+  schedule:
+    - cron: '17 4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-public-data
+  cancel-in-progress: false
+
+jobs:
+  fetch-and-commit:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Test Goodreads parser and snapshot handling
+        run: python -m unittest discover -s scripts/tests -p 'test_*.py' -v
+      - name: Fetch Goodreads books
+        run: python scripts/fetch_goodreads.py
+      - name: Commit updated books
+        run: |
+          bash scripts/commit-data.sh public/goodreads-data.json 'chore(goodreads): update books'

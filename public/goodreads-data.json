@@ -1,0 +1,111 @@
+{
+  "currentlyReading": [
+    {
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1567194324l/52806263._SX98_SY160_.jpg",
+      "title": "Meditações de Marco Aurélio",
+      "link": "https://www.goodreads.com/review/show/8552612074",
+      "author": "Marcus Aurelius",
+      "id": "8552612074"
+    },
+    {
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1556604137l/34466963._SX98_.jpg",
+      "title": "Why We Sleep: Unlocking the Power of Sleep and Dreams",
+      "link": "https://www.goodreads.com/review/show/8403536726",
+      "author": "Matthew Walker",
+      "id": "8403536726"
+    },
+    {
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1735589383l/216351768._SX98_.jpg",
+      "title": "The Let Them Theory",
+      "link": "https://www.goodreads.com/review/show/7877029676",
+      "author": "Mel Robbins",
+      "id": "7877029676"
+    },
+    {
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1667842643l/63248845._SX98_.jpg",
+      "title": "Cem Anos de Perdão",
+      "link": "https://www.goodreads.com/review/show/7869970163",
+      "author": "João Tordo",
+      "id": "7869970163"
+    },
+    {
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1555849298l/40745377._SX98_.jpg",
+      "title": "Hunting Evil",
+      "link": "https://www.goodreads.com/review/show/7722849397",
+      "author": "Chris Carter",
+      "id": "7722849397"
+    }
+  ],
+  "readBooks": [
+    {
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1680687321l/125116554._SX98_.jpg",
+      "title": "Same as Ever: A Guide to What Never Changes",
+      "link": "https://www.goodreads.com/review/show/8388256827",
+      "author": "Morgan Housel",
+      "id": "8388256827"
+    },
+    {
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1747192735l/231148075._SX98_.jpg",
+      "title": "The Art of Spending Money: Simple Choices for a Richer Life",
+      "link": "https://www.goodreads.com/review/show/8388256789",
+      "author": "Morgan Housel",
+      "id": "8388256789"
+    },
+    {
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1581527774l/41881472._SX98_.jpg",
+      "title": "The Psychology of Money: Timeless Lessons on Wealth, Greed, and Happiness",
+      "link": "https://www.goodreads.com/review/show/8386935773",
+      "author": "Morgan Housel",
+      "id": "8386935773"
+    },
+    {
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1655988385l/40121378._SX98_.jpg",
+      "title": "Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones",
+      "link": "https://www.goodreads.com/review/show/8369796410",
+      "author": "James Clear",
+      "id": "8369796410"
+    },
+    {
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1725760169l/218601878._SX98_.jpg",
+      "title": "Sonny Boy: A Memoir",
+      "link": "https://www.goodreads.com/review/show/7044919116",
+      "author": "Al Pacino",
+      "id": "7044919116"
+    },
+    {
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1622109258l/58174578._SX98_.jpg",
+      "title": "Águas Passadas",
+      "link": "https://www.goodreads.com/review/show/7768769120",
+      "author": "João Tordo",
+      "id": "7768769120"
+    },
+    {
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1518408236l/35131333._SX98_.jpg",
+      "title": "Gallery of the Dead",
+      "link": "https://www.goodreads.com/review/show/7401077957",
+      "author": "Chris Carter",
+      "id": "7401077957"
+    },
+    {
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1720427982l/216200957._SX98_.jpg",
+      "title": "Como ficar rico com o Mercado Imobiliário",
+      "link": "https://www.goodreads.com/review/show/7118039116",
+      "author": "Ricardo Matos",
+      "id": "7118039116"
+    },
+    {
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1718973347l/215080443._SX98_.jpg",
+      "title": "Nada disto é verdade",
+      "link": "https://www.goodreads.com/review/show/7122264585",
+      "author": "Lisa Jewell",
+      "id": "7122264585"
+    },
+    {
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1713873028l/210983995._SX98_.jpg",
+      "title": "Nunca Mintas",
+      "link": "https://www.goodreads.com/review/show/7118025677",
+      "author": "Freida McFadden",
+      "id": "7118025677"
+    }
+  ]
+}

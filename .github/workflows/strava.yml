@@ -7,8 +7,13 @@ on:
   # Allow manual trigger
   workflow_dispatch:
 
+concurrency:
+  group: update-public-data
+  cancel-in-progress: false
+
 jobs:
   fetch-and-commit:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: write # Important: allows github actions to push code
@@ -16,6 +21,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -31,16 +38,4 @@ jobs:
 
       - name: Commit and Push changes
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          
-          git add public/strava-data.json --force
-          
-          # Check if there are any staged changes
-          if git diff --staged --quiet; then
-            echo "No new Strava activities to update"
-          else
-            git commit -m "chore(strava): auto-update daily activities"
-            git push
-            echo "Successfully updated Strava data"
-          fi
+          bash scripts/commit-data.sh public/strava-data.json 'chore(strava): auto-update daily activities'
