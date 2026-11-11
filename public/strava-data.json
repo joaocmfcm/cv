@@ -7,9 +7,9 @@
   },
   {
     "date": "2025-11-10",
-    "count": 2,
-    "kcal": 711,
-    "duration": 136
+    "count": 0,
+    "kcal": 0,
+    "duration": 0
   },
   {
     "date": "2025-11-11",
@@ -2200,5 +2200,11 @@
     "count": 1,
     "kcal": 888,
     "duration": 48
+  },
+  {
+    "date": "2026-11-11",
+    "count": 1,
+    "kcal": 0,
+    "duration": 42
   }
 ]
